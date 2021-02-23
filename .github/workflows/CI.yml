@@ -11,12 +11,9 @@ jobs:
         python: ['3.7', '3.8', '3.9']            
     runs-on: ${{ matrix.os }}
     steps:
-      - name: download
+      - name: download if needed
         if: strategy.job-index != 0
         run: echo download
       - name: report
         run: | 
-          echo OS = ${{ matrix.os }} 
-          echo Python = Py${{ matrix.python }} 
-          echo Job index = ${{ strategy.job-index }} 
-          echo Jobs = $${{ strategy.job-total }}
+          echo "${{ matrix.os }}/Py${{ matrix.python }}"  
