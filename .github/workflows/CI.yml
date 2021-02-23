@@ -17,7 +17,6 @@ jobs:
           update-conda: true
           python-version: ${{matrix.python}}
           conda-channels: conda-forge 
-      - run: python --version
       - name: Download
         if: strategy.job-index != 0
         uses: actions/download-artifact@v2.0.8
@@ -25,8 +24,8 @@ jobs:
           name: report.txt
       - name: report
         run: | 
-          echo "${{ matrix.os }}/Py${{ matrix.python }}" >> report.txt
-          ls -la
+          export PyVer=`python --version`
+          echo "${{ matrix.os }}/$PyVer" >> report.txt
           cat report.txt
       - name: Upload 
         uses: actions/upload-artifact@v2.2.2
