@@ -11,10 +11,10 @@ jobs:
         python: ['3.7', '3.8', '3.9']            
     runs-on: ${{ matrix.os }}
     steps:
-      - name: reference
-        env:
-          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
+#      - name: reference
+#        env:
+#          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
+#        run: echo "$STRATEGY_CONTEXT"
       - name: report
         run: echo ${{ format matrix.os }} ${{ matrix.python }} ${{ strategy.job-index }} $${{ strategy.job-total }}
 
