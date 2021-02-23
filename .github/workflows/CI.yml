@@ -11,6 +11,13 @@ jobs:
         python: ['3.7', '3.8', '3.9']            
     runs-on: ${{ matrix.os }}
     steps:
+      - name: setup-conda
+        uses: s-weigand/setup-conda@v1.0.5
+        with:
+          update-conda: true
+          python-version: ${{matrix.python}}
+          conda-channels: conda-forge 
+      - run: python --version
       - name: Download
         if: strategy.job-index != 0
         uses: actions/download-artifact@v2.0.8
