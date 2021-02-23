@@ -20,6 +20,7 @@ jobs:
         run: | 
           echo "${{ matrix.os }}/Py${{ matrix.python }}" >> report.txt
           ls -la
+          cat report.txt
       - name: Upload 
         uses: actions/upload-artifact@v2.2.2
         with:
