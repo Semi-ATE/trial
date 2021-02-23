@@ -11,10 +11,9 @@ jobs:
         python: ['3.7', '3.8', '3.9']            
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJSON(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
+      - name: download
+        if: strategy.job-index != 0
+        run: echo download
       - name: report
         run: | 
           echo OS = ${{ matrix.os }} 
