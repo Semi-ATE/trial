@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: report
         run: | 
-          echo OS = ${{ format matrix.os }} 
+          echo OS = ${{ matrix.os }} 
           echo Python = Py${{ matrix.python }} 
           echo Job index = ${{ strategy.job-index }} 
           echo Jobs = $${{ strategy.job-total }}
