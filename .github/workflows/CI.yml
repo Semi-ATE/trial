@@ -11,9 +11,15 @@ jobs:
         python: ['3.7', '3.8', '3.9']            
     runs-on: ${{ matrix.os }}
     steps:
-      - name: download if needed
+      - name: Download
         if: strategy.job-index != 0
-        run: echo download
+        uses: actions/download-artifact@v2.0.8
+        with: 
+          name: report.txt
       - name: report
         run: | 
-          echo "${{ matrix.os }}/Py${{ matrix.python }}"  
+          echo "${{ matrix.os }}/Py${{ matrix.python }}" >> report.txt
+      - name: Upload 
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: report.txt
